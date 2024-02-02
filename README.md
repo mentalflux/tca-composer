@@ -276,7 +276,7 @@ Composer has now automatically generated a functional `body` and added a `view` 
 
 ### Composing Reducers
 
-The real power of Composer comes from composing child reducers into a parent reducer. Let's create a `TwoCounters` reducer that consists of two `Counter` reducers. To accomplish this we are going to use a `@ComposeReducer` macro attached to our top level reducer declaration. This maros allows you to declare all of your child reducers in one place, including reducers for navigation destinations and navigation stacks. It also allows for some additional customization such as conforming `Action` to `BindableAction`  to allow bindable access to `State` from a `View`. In the example below, the `.bindable` option is specified to `@ComposeReducer` to enable bindings and two children named `counter1` and `counter2` are added.
+The real power of Composer comes from composing child reducers into a parent reducer. Let's create a `TwoCounters` reducer that consists of two `Counter` reducers. To accomplish this we are going to use a `@ComposeReducer` macro attached to our top level reducer declaration. This macro allows you to declare all of your child reducers in one place, including reducers for navigation destinations and navigation stacks. It also allows for some additional customization such as conforming `Action` to `BindableAction`  to allow bindable access to `State` from a `View`. In the example below, the `.bindable` option is specified to `@ComposeReducer` to enable bindings and two children named `counter1` and `counter2` are added.
 
 ```swift
  @ComposeReducer(
@@ -288,10 +288,10 @@ The real power of Composer comes from composing child reducers into a parent red
  )
  @Composer
  struct TwoCounters {
-   
    struct State {
      var isDisplayingSum = false
    }
+  
    enum ViewAction {
      case resetCountersTapped
    }
