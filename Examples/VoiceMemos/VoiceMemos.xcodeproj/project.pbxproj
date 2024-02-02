@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C6B3C962B34CBEA002C4414 /* VoiceMemosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3C952B34CBEA002C4414 /* VoiceMemosApp.swift */; };
+		5C6B3C9A2B34CBEB002C4414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B3C992B34CBEB002C4414 /* Assets.xcassets */; };
+		5C6B3CA72B34CBEB002C4414 /* VoiceMemosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CA62B34CBEB002C4414 /* VoiceMemosTests.swift */; };
+		5C6B3CC02B34CC70002C4414 /* tca-composer in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B3CBF2B34CC70002C4414 /* tca-composer */; };
+		5C6B3CC12B34CC70002C4414 /* tca-composer in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B3CBF2B34CC70002C4414 /* tca-composer */; };
+		5C6B3CC42B34CC82002C4414 /* TCAComposer in Frameworks */ = {isa = PBXBuildFile; productRef = 5C6B3CC32B34CC82002C4414 /* TCAComposer */; };
+		5C6B3CCA2B34CD94002C4414 /* RecordingMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CC52B34CD94002C4414 /* RecordingMemo.swift */; };
+		5C6B3CCB2B34CD94002C4414 /* VoiceMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CC62B34CD94002C4414 /* VoiceMemo.swift */; };
+		5C6B3CCC2B34CD94002C4414 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CC72B34CD94002C4414 /* Dependencies.swift */; };
+		5C6B3CCD2B34CD94002C4414 /* VoiceMemos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CC82B34CD94002C4414 /* VoiceMemos.swift */; };
+		5C6B3CCE2B34CD94002C4414 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CC92B34CD94002C4414 /* Helpers.swift */; };
+		5C6B3CD42B34CDD8002C4414 /* LiveAudioPlayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CD22B34CDD8002C4414 /* LiveAudioPlayerClient.swift */; };
+		5C6B3CD52B34CDD8002C4414 /* AudioPlayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CD32B34CDD8002C4414 /* AudioPlayerClient.swift */; };
+		5C6B3CD92B34CE05002C4414 /* AudioRecorderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CD72B34CE05002C4414 /* AudioRecorderClient.swift */; };
+		5C6B3CDA2B34CE05002C4414 /* LiveAudioRecorderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B3CD82B34CE05002C4414 /* LiveAudioRecorderClient.swift */; };
+		5CBA21E22B4090BC00921210 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA21E12B4090BC00921210 /* README.md */; };
+		5CBA21E32B4090BC00921210 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA21E12B4090BC00921210 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C6B3CA32B34CBEB002C4414 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C6B3C8A2B34CBEA002C4414 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C6B3C912B34CBEA002C4414;
+			remoteInfo = VoiceMemos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5C6B3C922B34CBEA002C4414 /* VoiceMemos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceMemos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6B3C952B34CBEA002C4414 /* VoiceMemosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMemosApp.swift; sourceTree = "<group>"; };
+		5C6B3C992B34CBEB002C4414 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C6B3CA22B34CBEB002C4414 /* VoiceMemosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceMemosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6B3CA62B34CBEB002C4414 /* VoiceMemosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMemosTests.swift; sourceTree = "<group>"; };
+		5C6B3CBF2B34CC70002C4414 /* tca-composer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "tca-composer"; path = ../..; sourceTree = "<group>"; };
+		5C6B3CC52B34CD94002C4414 /* RecordingMemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingMemo.swift; sourceTree = "<group>"; };
+		5C6B3CC62B34CD94002C4414 /* VoiceMemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceMemo.swift; sourceTree = "<group>"; };
+		5C6B3CC72B34CD94002C4414 /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		5C6B3CC82B34CD94002C4414 /* VoiceMemos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceMemos.swift; sourceTree = "<group>"; };
+		5C6B3CC92B34CD94002C4414 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		5C6B3CD22B34CDD8002C4414 /* LiveAudioPlayerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveAudioPlayerClient.swift; sourceTree = "<group>"; };
+		5C6B3CD32B34CDD8002C4414 /* AudioPlayerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerClient.swift; sourceTree = "<group>"; };
+		5C6B3CD72B34CE05002C4414 /* AudioRecorderClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderClient.swift; sourceTree = "<group>"; };
+		5C6B3CD82B34CE05002C4414 /* LiveAudioRecorderClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveAudioRecorderClient.swift; sourceTree = "<group>"; };
+		5CBA21E12B4090BC00921210 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C6B3C8F2B34CBEA002C4414 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6B3CC42B34CC82002C4414 /* TCAComposer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B3C9F2B34CBEB002C4414 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C6B3C892B34CBEA002C4414 = {
+			isa = PBXGroup;
+			children = (
+				5C6B3CBF2B34CC70002C4414 /* tca-composer */,
+				5CBA21E12B4090BC00921210 /* README.md */,
+				5C6B3C942B34CBEA002C4414 /* VoiceMemos */,
+				5C6B3CA52B34CBEB002C4414 /* VoiceMemosTests */,
+				5C6B3C932B34CBEA002C4414 /* Products */,
+				5C6B3CC22B34CC82002C4414 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5C6B3C932B34CBEA002C4414 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B3C922B34CBEA002C4414 /* VoiceMemos.app */,
+				5C6B3CA22B34CBEB002C4414 /* VoiceMemosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C6B3C942B34CBEA002C4414 /* VoiceMemos */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B3CC72B34CD94002C4414 /* Dependencies.swift */,
+				5C6B3CC92B34CD94002C4414 /* Helpers.swift */,
+				5C6B3CC52B34CD94002C4414 /* RecordingMemo.swift */,
+				5C6B3CC62B34CD94002C4414 /* VoiceMemo.swift */,
+				5C6B3CC82B34CD94002C4414 /* VoiceMemos.swift */,
+				5C6B3C952B34CBEA002C4414 /* VoiceMemosApp.swift */,
+				5C6B3C992B34CBEB002C4414 /* Assets.xcassets */,
+				5C6B3CD12B34CDD8002C4414 /* AudioPlayerClient */,
+				5C6B3CD62B34CE05002C4414 /* AudioRecorderClient */,
+			);
+			path = VoiceMemos;
+			sourceTree = "<group>";
+		};
+		5C6B3CA52B34CBEB002C4414 /* VoiceMemosTests */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B3CA62B34CBEB002C4414 /* VoiceMemosTests.swift */,
+			);
+			path = VoiceMemosTests;
+			sourceTree = "<group>";
+		};
+		5C6B3CC22B34CC82002C4414 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C6B3CD12B34CDD8002C4414 /* AudioPlayerClient */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B3CD22B34CDD8002C4414 /* LiveAudioPlayerClient.swift */,
+				5C6B3CD32B34CDD8002C4414 /* AudioPlayerClient.swift */,
+			);
+			path = AudioPlayerClient;
+			sourceTree = "<group>";
+		};
+		5C6B3CD62B34CE05002C4414 /* AudioRecorderClient */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B3CD72B34CE05002C4414 /* AudioRecorderClient.swift */,
+				5C6B3CD82B34CE05002C4414 /* LiveAudioRecorderClient.swift */,
+			);
+			path = AudioRecorderClient;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C6B3C912B34CBEA002C4414 /* VoiceMemos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6B3CB62B34CBEB002C4414 /* Build configuration list for PBXNativeTarget "VoiceMemos" */;
+			buildPhases = (
+				5C6B3C8E2B34CBEA002C4414 /* Sources */,
+				5C6B3C8F2B34CBEA002C4414 /* Frameworks */,
+				5C6B3C902B34CBEA002C4414 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VoiceMemos;
+			packageProductDependencies = (
+				5C6B3CC32B34CC82002C4414 /* TCAComposer */,
+			);
+			productName = VoiceMemos;
+			productReference = 5C6B3C922B34CBEA002C4414 /* VoiceMemos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5C6B3CA12B34CBEB002C4414 /* VoiceMemosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6B3CB92B34CBEB002C4414 /* Build configuration list for PBXNativeTarget "VoiceMemosTests" */;
+			buildPhases = (
+				5C6B3C9E2B34CBEB002C4414 /* Sources */,
+				5C6B3C9F2B34CBEB002C4414 /* Frameworks */,
+				5C6B3CA02B34CBEB002C4414 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C6B3CA42B34CBEB002C4414 /* PBXTargetDependency */,
+			);
+			name = VoiceMemosTests;
+			productName = VoiceMemosTests;
+			productReference = 5C6B3CA22B34CBEB002C4414 /* VoiceMemosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C6B3C8A2B34CBEA002C4414 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					5C6B3C912B34CBEA002C4414 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					5C6B3CA12B34CBEB002C4414 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 5C6B3C912B34CBEA002C4414;
+					};
+				};
+			};
+			buildConfigurationList = 5C6B3C8D2B34CBEA002C4414 /* Build configuration list for PBXProject "VoiceMemos" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C6B3C892B34CBEA002C4414;
+			productRefGroup = 5C6B3C932B34CBEA002C4414 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C6B3C912B34CBEA002C4414 /* VoiceMemos */,
+				5C6B3CA12B34CBEB002C4414 /* VoiceMemosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C6B3C902B34CBEA002C4414 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CBA21E22B4090BC00921210 /* README.md in Resources */,
+				5C6B3CC02B34CC70002C4414 /* tca-composer in Resources */,
+				5C6B3C9A2B34CBEB002C4414 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B3CA02B34CBEB002C4414 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CBA21E32B4090BC00921210 /* README.md in Resources */,
+				5C6B3CC12B34CC70002C4414 /* tca-composer in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C6B3C8E2B34CBEA002C4414 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6B3CD92B34CE05002C4414 /* AudioRecorderClient.swift in Sources */,
+				5C6B3CD52B34CDD8002C4414 /* AudioPlayerClient.swift in Sources */,
+				5C6B3CCC2B34CD94002C4414 /* Dependencies.swift in Sources */,
+				5C6B3CCE2B34CD94002C4414 /* Helpers.swift in Sources */,
+				5C6B3CCB2B34CD94002C4414 /* VoiceMemo.swift in Sources */,
+				5C6B3C962B34CBEA002C4414 /* VoiceMemosApp.swift in Sources */,
+				5C6B3CD42B34CDD8002C4414 /* LiveAudioPlayerClient.swift in Sources */,
+				5C6B3CDA2B34CE05002C4414 /* LiveAudioRecorderClient.swift in Sources */,
+				5C6B3CCA2B34CD94002C4414 /* RecordingMemo.swift in Sources */,
+				5C6B3CCD2B34CD94002C4414 /* VoiceMemos.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B3C9E2B34CBEB002C4414 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6B3CA72B34CBEB002C4414 /* VoiceMemosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C6B3CA42B34CBEB002C4414 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C6B3C912B34CBEA002C4414 /* VoiceMemos */;
+			targetProxy = 5C6B3CA32B34CBEB002C4414 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5C6B3CB42B34CBEB002C4414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C6B3CB52B34CBEB002C4414 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C6B3CB72B34CBEB002C4414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V93Q3Y8MA3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Your microphone will be used to record your speech when you press the \"Start Recording\" button.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VoiceMemos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C6B3CB82B34CBEB002C4414 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V93Q3Y8MA3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Your microphone will be used to record your speech when you press the \"Start Recording\" button.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VoiceMemos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5C6B3CBA2B34CBEB002C4414 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V93Q3Y8MA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VoiceMemosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceMemos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VoiceMemos";
+			};
+			name = Debug;
+		};
+		5C6B3CBB2B34CBEB002C4414 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V93Q3Y8MA3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.VoiceMemosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceMemos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VoiceMemos";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C6B3C8D2B34CBEA002C4414 /* Build configuration list for PBXProject "VoiceMemos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B3CB42B34CBEB002C4414 /* Debug */,
+				5C6B3CB52B34CBEB002C4414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C6B3CB62B34CBEB002C4414 /* Build configuration list for PBXNativeTarget "VoiceMemos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B3CB72B34CBEB002C4414 /* Debug */,
+				5C6B3CB82B34CBEB002C4414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C6B3CB92B34CBEB002C4414 /* Build configuration list for PBXNativeTarget "VoiceMemosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B3CBA2B34CBEB002C4414 /* Debug */,
+				5C6B3CBB2B34CBEB002C4414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C6B3CC32B34CC82002C4414 /* TCAComposer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TCAComposer;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5C6B3C8A2B34CBEA002C4414 /* Project object */;
+}
