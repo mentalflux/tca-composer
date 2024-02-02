@@ -167,17 +167,13 @@ extension ComposedReducerChild {
   public static func identifiedArray<Child: Reducer>(
     _ name: String,
     of: Child.Type
-  ) -> Self { Self() }
+  ) -> Self where Child.State: Identifiable { Self() }
 
   public static func identifiedArray<Child: Reducer>(
     _ name: String,
     of: Child.Type,
     initialState: @autoclosure () -> IdentifiedArrayOf<Child.State>
-  ) -> Self { Self() }
-
-  //    public static func alert<Action>(_ name: String, action: Action) -> some ComposerChildren {
-  //        ComposerChildren()
-  //    }
+  ) -> Self where Child.State: Identifiable { Self() }
 
   public static func presentsReducer<Child: Reducer>(
     _ name: String,
