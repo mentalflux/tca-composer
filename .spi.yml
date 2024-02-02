@@ -1,4 +1,12 @@
 version: 1
 builder:
   configs:
+  - plaform: ios
+    scheme: TCAComposer
+  - plaform: macos-xcodebuild
+    scheme: TCAComposer
+  - plaform: tvos
+    scheme: TCAComposer
+  - platform: watchos
+    scheme: TCAComposer
   - documentation_targets: [TCAComposer]
