@@ -9,6 +9,22 @@ TCA Composer is a swift macro framework for eliminating boiler-plate code in [TC
 > If you are migrating an existing `Reducer` to Composer, it is highly recommended that you first update your `Reducer` to use `ObservableState` by following the [migration guide](https://pointfreeco.github.io/swift-composable-architecture/main/documentation/composablearchitecture/migratingto1.7) to make a transition to 
 > using Composer much smoother.
 
+* [Examples](#examples)
+* [Basic Usage](#basic-usage)
+* [Improved View Ergonomics](#improved-view-ergonomics)
+* [Documentation](#documentation)
+* [Known Issues](#known-issues)
+
+## Examples
+
+This repository includes several examples from the [TCA repo](https://github.com/pointfreeco/swift-composable-architecture/tree/main/Examples) that have been converted to use the Composer macro framework, including:
+
+* [SyncUps app](https://github.com/mentalflux/tca-composer/tree/main/Examples/SyncUps)
+* [Todos](https://github.com/mentalflux/tca-composer/tree/main/Examples/Todos)
+* [Voice memos](https://github.com/mentalflux/tca-composer/tree/main/Examples/VoiceMemos)
+
+The examples are a great way to get started and experiment with Composer.
+
 ## Basic Usage
 
 ### Getting Started
@@ -280,15 +296,22 @@ Composer introduces a new concept of a `ScopePath` that simplify the creation of
 + .alert($store.scopes(\.destination.alert))
 ```
 
+## Documentation
+
+The documentation for releases and `main` are available here:
+
+* [`main`](https://swiftpackageindex.com/mentalflux/tca-composer/main/documentation/tcacomposer)
+* [0.1.0](https://swiftpackageindex.com/mentalflux/tca-composer/0.1.0/documentation/tcacomposer)
+  
 ## Known Issues
 
-### XCode Macro Expansion
+### Xcode Macro Expansion
 
-XCode does not currently expand macros in the source editor when there are multiple macros on the same source line. This is a common occurence when Composer adds members to existing `State` and `Action` declarations, and will prevent you from seeing the code that is being generated. However, if the generated code produces a compiler error, Xcode will expand the macros and show you the error.
+Xcode does not currently expand macros in the source editor when there are multiple macros on the same source line. This is a common occurence when Composer adds members to existing `State` and `Action` declarations, and will prevent you from seeing the code that is being generated. However, if the generated code produces a compiler error, Xcode will expand the macros and show you the error.
 
 ### Swift Compiler
 
-A number of bugs in the swift compiler were discovered while developing Composer. Many of these were mitigated by changes in Composer's design and implementaiton. However, some compiler issues may still be experienced when using Composer.
+A number of bugs in the swift compiler were discovered while developing Composer. Many of these were mitigated by changes in Composer's design and implementation. However, some compiler issues may still be encountered when using Composer (though in experience most can be worked around). If you encounter a troublesome compiler error, please file an issue or start a discussion.
 
 ## Credits
 
