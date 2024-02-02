@@ -203,7 +203,7 @@ Continuing with our `Counter` example. Instead of writing a `body` for our `Redu
    }
  }
 
--  var body: some ReducerOf<Self>
+-  var body: some ReducerOf<Self> {
 -    Reduce { action, state in
 +  @ComposeBodyActionCase
 +  func view(state: inout State, action: ViewAction) {
