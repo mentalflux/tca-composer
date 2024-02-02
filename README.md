@@ -1,5 +1,7 @@
 # TCA Composer
 
+[![CI](https://github.com/mentalflux/tca-composer/actions/workflows/ci.yml/badge.svg)](https://github.com/mentalflux/tca-composer/actions/workflows/ci.yml)
+
 TCA Composer is a swift macro framework for eliminating boiler-plate code in [TCA-based](https://github.com/pointfreeco/swift-composable-architecture) applications. Composer provides a collection of swift macros that allow you to declaritively construct a `Reducer` and automaticaly generate all or portions of the `State`, `Action`, and `body` declarations. Composer can also automatically generate an entire `Reducer` for use in navigation destinations and stacks. Composer encourages simple design patterns to structure your code, while still allowing you complete flexibility in how to structure your code and application.
 
 > [!Important]
