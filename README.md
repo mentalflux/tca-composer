@@ -389,7 +389,7 @@ struct TwoCounters {
 
 Wow, that's a lot code! Composer has automatically generated an `Action` that includes conformance for `BindingAction` thanks to the `.bindable` option. The `Action` also incorporates cases for our two reducer children and the `view` action from `@ComposeBodyActionCase` macro. The automatically generated `body` calls the `BindingReducer`, scopes the two child reducers and then finally invokes our `view` function to reduce the `ViewAction`.
 
-You will also notice that two new macros appear that begin with an underscore are attached to `State`. These are internal macros that Composer uses to generate code in portions of your `Reducer` code and are a byproduct of how the swift macro system works. The internal macros are not meant to be used by you and may change from release to release. Here's what they look like when fully expanded for `State`:
+You will also notice that new macros appear that begin with an underscore are attached to `State`. These are internal macros that Composer uses to generate code in portions of your `Reducer` code and are a byproduct of how the swift macro system works. The internal macros are not meant to be used by you and may change from release to release. Here's what they look like when fully expanded for `State`:
 
 ```diff
  @ObservableState
@@ -412,7 +412,7 @@ You will also notice that two new macros appear that begin with an underscore ar
  }
 ```
 
-The macros automatically added new members to `State` for our child reducers including the required support for `@ObservableState`. The `@_ComposerScopePathable` macro combined with the generated `AllComposedScopePaths` struct provides support for improving [view ergonomics](#improved-view-ergonomics) by generating a `ScopePath` for each child reducer so that you can scope a child reducer using `store.scopes.counter`, rather than the more verbose `store.scope(state: \.counter1, action: \.counter1)`. Pretty cool, eh?
+The macros automatically added new members to `State` for our child reducers including the required support for `@ObservableState`. The `@_ComposerScopePathable` macro combined with the generated `AllComposedScopePaths` struct provides support for improving [view ergonomics](#improved-view-ergonomics) by generating a `ScopePath` for each child reducer so that you can scope a child reducer using `store.scopes.counter1`, rather than the more verbose `store.scope(state: \.counter1, action: \.counter1)`. Pretty cool, eh?
 
 </details>
 
