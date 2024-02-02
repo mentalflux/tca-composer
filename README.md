@@ -305,13 +305,13 @@ The documentation for releases and `main` are available here:
   
 ## Known Issues
 
-### XCode Macro Expansion
+### Xcode Macro Expansion
 
-XCode does not currently expand macros in the source editor when there are multiple macros on the same source line. This is a common occurence when Composer adds members to existing `State` and `Action` declarations, and will prevent you from seeing the code that is being generated. However, if the generated code produces a compiler error, Xcode will expand the macros and show you the error.
+Xcode does not currently expand macros in the source editor when there are multiple macros on the same source line. This is a common occurence when Composer adds members to existing `State` and `Action` declarations, and will prevent you from seeing the code that is being generated. However, if the generated code produces a compiler error, Xcode will expand the macros and show you the error.
 
 ### Swift Compiler
 
-A number of bugs in the swift compiler were discovered while developing Composer. Many of these were mitigated by changes in Composer's design and implementaiton. However, some compiler issues may still be encountered when using Composer (though in experience most can be worked around). If you encounter a troublesome compiler error, please file an issue or start a discussion.
+A number of bugs in the swift compiler were discovered while developing Composer. Many of these were mitigated by changes in Composer's design and implementation. However, some compiler issues may still be encountered when using Composer (though in experience most can be worked around). If you encounter a troublesome compiler error, please file an issue or start a discussion.
 
 ## Credits
 
