@@ -249,7 +249,7 @@ Continuing with our `Counter` example. Instead of writing a `body` for our `Redu
    }
 +
 +  @CasePathable
-+  enum Action: ViewAction {
++  enum Action: ComposableArchitecture.ViewAction {
 +    view(ViewAction)
 +  }
 +
@@ -274,9 +274,151 @@ Composer has now automatically generated a functional `body` and added a `view` 
   
 </details>
 
-### More to come soon...
+### Composing Reducers
 
-More examples of using Composer over the next few days...
+The real power of Composer comes from composing child reducers into a parent reducer. Let's create a `TwoCounters` reducer that consists of two `Counter` reducers. To accomplish this we are going to use a `@ComposeReducer` macro attached to our top level reducer declaration. This maros allows you to declare all of your child reducers in one place, including reducers for navigation destinations and navigation stacks. It also allows for some additional customization such as conforming `Action` to `BindableAction`  to allow bindable access to `State` from a `View`. In the example below, the `.bindable` option is specified to `@ComposeReducer` to enable bindings and two children named `counter1` and `counter2` are added.
+
+```swift
+ @ComposeReducer(
+   .bindable,
+   children: [
+     .reducer("counter1", of: Counter.self, initialState: .init()),
+     .reducer("counter2", of: Counter.self, initialState: .init())
+   ]
+ )
+ @Composer
+ struct TwoCounters {
+   
+   struct State {
+     var isDisplayingSum = false
+   }
+   enum ViewAction {
+     case resetCountersTapped
+   }
+   
+   @ComposeBodyActionCase
+   func view(state: inout State, action: ViewAction) {
+     switch action {
+     case .resetCountersTapped:
+       state.counter1.count = 0
+       state.counter2.count = 0
+     }
+   }
+ }
+```
+
+<details>
+<summary>
+
+#### Let's see what code was generated. Click to expand the `@Composer` macro
+
+</summary>
+    
+```diff
+@ComposeReducer(
+  .bindable,
+  children: [
+    .reducer("counter1", of: Counter.self, initialState: .init()),
+    .reducer("counter2", of: Counter.self, initialState: .init())
+  ]
+)
+@Composer
+struct TwoCounters {
+  
++ @_ComposerScopePathable
++ @_ComposedStateMember("counter1", of: Counter.State.self, initialValue: .init())
++ @_ComposedStateMember("counter2", of: Counter.State.self, initialValue: .init())
++ @ObservableState
+  struct State {
+    var isDisplayingSum = false
+  }
+  
++ @CasePathable
+  enum ViewAction {
+    case resetCountersTapped
+  }
+  
+  @ComposeBodyActionCase
+  func view(state: inout State, action: ViewAction) {
+    switch action {
+    case .resetCountersTapped:
+      state.counter1.count = 0
+      state.counter2.count = 0
+    }
+  }
+  
++ @CasePathable
++ enum Action: ComposableArchitecture.BindableAction, ComposableArchitecture.ViewAction {
++   case binding(BindingAction<State>)
++   case counter1(Counter.Action)
++   case counter2(Counter.Action)
++   case view(ViewAction)
++ }
++
++ @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
++ var body: some ReducerOf<Self> {
++   ComposableArchitecture.BindingReducer()
++   ComposableArchitecture.Scope(state: \.counter1, action: \Action.Cases.counter1) {
++     Counter()
++   }
++   ComposableArchitecture.Scope(state: \.counter2, action: \Action.Cases.counter2) {
++     Counter()
++   }
++   ComposableArchitecture.CombineReducers {
++     TCAComposer.ReduceAction(\Action.Cases.view) { state, action in
++       self.view(state: &state, action: action)
++         return .none
++     }
++   }
++ }
++
++ struct AllComposedScopePaths {
++   var counter1: TCAComposer.ScopePath<TwoCounters.State, Counter.State, TwoCounters.Action, Counter.Action> {
++     get {
++       return TCAComposer.ScopePath(state: \State.counter1, action: \Action.Cases.counter1)
++     }
++   }
++   var counter2: TCAComposer.ScopePath<TwoCounters.State, Counter.State, TwoCounters.Action, Counter.Action> {
++     get {
++       return TCAComposer.ScopePath(state: \State.counter2, action: \Action.Cases.counter2)
++     }
++   }
++ }
+}
+```
+
+Wow, that's a lot code! Composer has automatically generated an `Action` that includes conformance for `BindingAction` thanks to the `.bindable` option. The `Action` also incorporates cases for our two reducer children and the `view` action from `@ComposeBodyActionCase` macro. The automatically generated `body` calls the `BindingReducer`, scopes the two child reducers and then finally invokes our `view` function to reduce the `ViewAction`.
+
+You will also notice that two new macros appear that begin with an underscore are attached to `State`. These are internal macros that Composer uses to generate code in portions of your `Reducer` code and are a byproduct of how the swift macro system works. The internal macros are not meant to be used by you and may change from release to release. Here's what they look like when fully expanded for `State`:
+
+```diff
+ @ObservableState
+ struct State {
+   var isDisplayingSum = false
+    
++  static var allComposedScopePaths: AllComposedScopePaths {
++    AllComposedScopePaths()
++  }
++ 
++  @ObservationStateTracked
++  var counter1: Counter.State = .init()
++  @ObservationStateIgnored
++  private var _counter1: Counter.State
++ 
++  @ObservationStateTracked
++  var counter2: Counter.State = .init()
++  @ObservationStateIgnored
++  private var _counter2: Counter.State
+ }
+```
+
+The macros automatically added new members to `State` for our child reducers including the required support for `@ObservableState`. The `@_ComposerScopePathable` macro combined with the generated `AllComposedScopePaths` struct provides support for improving [view ergonomics](#improved-view-ergonomics) by generating a `ScopePath` for each child reducer so that you can scope a child reducer using `store.scopes.counter`, rather than the more verbose `store.scope(state: \.counter1, action: \.counter1)`. Pretty cool, eh?
+
+</details>
+
+### More to come....
+
+More examples of using Composer coming over the next few days. In the meantime, checkout the [Examples](#examples) for more complex usage.
 
 ## Improved View Ergonomics
 
