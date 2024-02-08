@@ -453,6 +453,10 @@ The documentation for releases and `main` are available here:
 
 Xcode does not currently expand macros in the source editor when there are multiple macros on the same source line. This is a common occurence when Composer adds members to existing `State` and `Action` declarations, and will prevent you from seeing the code that is being generated. However, if the generated code produces a compiler error, Xcode will expand the macros and show you the error.
 
+### SwiftUI Previews
+
+When using the new `#Preview` expression macro, the Preview may fail to load in certain situtations due to a macro expansion error. This is a common issue when multiple macros exist in the same source file and reference the expanded contents of another macro. If you experience this issue, you can work around the issue by either using a pre-macro `PreviewProvider` or move your `Reducer` definition to a separate source file.
+
 ### Swift Compiler
 
 A number of bugs in the swift compiler were discovered while developing Composer. Many of these were mitigated by changes in Composer's design and implementation. However, some compiler issues may still be encountered when using Composer (though in experience most can be worked around). If you encounter a troublesome compiler error, please file an issue or start a discussion.
