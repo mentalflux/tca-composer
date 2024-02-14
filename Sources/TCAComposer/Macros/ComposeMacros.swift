@@ -21,6 +21,15 @@ public macro ComposeActionAlertCase(_ name: String = "") =
     module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
   )
 
+/// Specifies the enum to use for the `ConfirmationDialogAction` for a confirmation dialog declared in a ``ComposeReducer(_:children:)`` child.
+///
+/// This is an alternative method of declaring confirmation dialogs
+@attached(peer)
+public macro ComposeActionConfirmationDialogCase(_ name: String = "") =
+#externalMacro(
+  module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
+)
+
 /// Directs ``Composer()`` to generate `CasePath`s on an existing `Action` enum. The macro should only be attached
 /// to an empty `AllCasePaths` struct declaration inside of the `Action`
 @attached(peer)

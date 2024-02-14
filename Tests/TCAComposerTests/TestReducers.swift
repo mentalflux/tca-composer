@@ -41,6 +41,44 @@ struct CounterParentWithExistingStateAndAction {
   }
 }
 
+// MARK: Alerts and Confirmation Dialogs
+
+@ComposeReducer(
+  children: [
+    .presentsAlert()
+  ]
+)
+@Composer
+struct PresentsAlertReducer {
+  
+  @ComposeActionAlertCase
+  enum AlertAction {
+    case confirmDelete
+  }
+  
+  @ComposeBody(action: \Action.Cases.alert.confirmDelete)
+  func handleAlert() {}
+  
+}
+
+@ComposeReducer(
+  children: [
+    .presentsConfirmationDialog()
+  ]
+)
+@Composer
+struct PresentsConfirmationDialogReducer {
+  
+  @ComposeActionConfirmationDialogCase
+  enum ConfirmationDialogAction {
+    case confirmDelete
+  }
+  
+  @ComposeBody(action: \Action.Cases.confirmationDialog.confirmDelete)
+  func handleConfirmationDialog() {}
+}
+
+
 // MARK: Navigation Destination
 
 @ComposeReducer(
