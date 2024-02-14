@@ -59,7 +59,7 @@ where
   /// > Note: Generated navigation destination reducers created using `.presentsDestination()` are always ``ScopePathable``
   /// rather than ``ScopeSwitchable`` to support scoping to bindings to be used in presentation modifiers in SwiftUI views.
   ///
-  public var cases: State.AllComposedScopeCases.ScopedState {
+  public var `case`: State.AllComposedScopeCases.ScopedState {
     return State.AllComposedScopeCases.scopedState(store: self)
   }
 }
