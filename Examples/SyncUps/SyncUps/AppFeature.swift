@@ -94,7 +94,7 @@ struct AppView: View {
     NavigationStack(path: $store.scopes(\.path)) {
       SyncUpsListView(store: store.scopes.syncUpsList)
     } destination: { store in
-      switch store.cases {
+      switch store.case {
       case let .detail(store):
         SyncUpDetailView(store: store)
       case let .meeting(meeting, syncUp: syncUp):
