@@ -143,10 +143,6 @@ struct ScopedChildReducer {
   }
 }
 
-enum TEst {
-  case foo(String = "", Int = 4)
-
-}
 struct StateMember {
   let name: String
   let type: String

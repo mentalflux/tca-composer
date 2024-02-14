@@ -1,6 +1,20 @@
 import ComposableArchitecture
 
 /// Represents a child to be added to a ``ComposeReducer(_:children:)`` macro declaration.  `ComposedReducerChild` cannot be instantiated directly, but should instead by created via one of the avilable static methods defined below.
+///
+/// ### Reducer Children
+/// * ``reducer(_:of:)-vox8`` - Adds a reducer child
+/// * ``reducer(_:of:initialState:)-71rhp`` - Adds a reducer child with an initial value for `State`
+/// * ``reducer(_:of:)-904p1`` - Adds a reducer child with optional state.
+/// * ``reducer(_:of:initialState:)-7adhx`` - Adds a reducer child with optional state and an initial value for `State`
+/// 
+/// ### Identified Arrays of Reducer Children
+/// * ``identifiedArray(_:of:)`` Adds an array of reducer children
+/// * ``identifiedArray(_:of:initialState:)`` - Adds an array of reducer children with an initial value for `State`
+///
+/// ### Presenting Children via Navigation
+///  * ``presentsAlert(_:)`` - Created an alert to be presented.
+///
 public struct ComposedReducerChild {
   fileprivate init() {}
 }
@@ -21,13 +35,14 @@ extension ComposedReducerChild {
   ///
   /// @ComposeReducer(
   ///   children: [
-  ///     .reducer("child", of: Child.self, initialState: .init())
+  ///     .reducer("child", of: Child.self)
   ///   ]
   /// )
   /// @Composer
   /// struct Parent {
   /// }
   /// ```
+  ///
   /// Generates the following output:
   ///
   public static func reducer<Child: Reducer>(
@@ -151,11 +166,14 @@ extension ComposedReducerChild {
   /// ```swift
   /// @Composer
   /// struct Child {
+  ///   struct State: Identifiable {
+  ///     var id: UUID
+  ///   }
   /// }
   ///
   /// @ComposeReducer(
   ///   children: [
-  ///     .identifiedArray("child", of: Child.self, initialState: .init())
+  ///     .identifiedArray("child", of: Child.self)
   ///   ]
   /// )
   /// @Composer
@@ -169,12 +187,42 @@ extension ComposedReducerChild {
     of: Child.Type
   ) -> Self where Child.State: Identifiable { Self() }
 
+  /// Constructs a `ComposedReducerChild` representing an array of child reducer state, respresented by an `IdentifiedArrayOf<Child.State>`.
+  /// - Parameters:
+  ///   - name: The name of the child. The name will be used to generate corresponding members of `State` and `Action`.
+  ///   - of: The type of `Reducer` to be used.
+  ///   - initialState: An initial value to assign to generated memeber of `State`
+  /// - Returns: A `ComposedReducerChild` representing a `Reducer`
+  ///
+  /// Given the following input example:
+  ///
+  /// ```swift
+  /// @Composer
+  /// struct Child {
+  ///   struct State: Identifiable {
+  ///     var id: UUID
+  ///   }
+  /// }
+  ///
+  /// @ComposeReducer(
+  ///   children: [
+  ///     .identifiedArray("child", of: Child.self, initialState: .init())
+  ///   ]
+  /// )
+  /// @Composer
+  /// struct Parent {
+  /// }
+  /// ```
+  ///
+  /// Generates the following output:
+  ///
   public static func identifiedArray<Child: Reducer>(
     _ name: String,
     of: Child.Type,
     initialState: @autoclosure () -> IdentifiedArrayOf<Child.State>
   ) -> Self where Child.State: Identifiable { Self() }
 
+  
   public static func presentsReducer<Child: Reducer>(
     _ name: String,
     of: Child.Type
