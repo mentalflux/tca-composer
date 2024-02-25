@@ -182,8 +182,25 @@ public macro ComposeBodyActionAlertCase(_ name: String = "") =
     module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
   )
 
+/// Specified the location in the `body` to attach the `.onChange()` modifier.
+public enum ComposeBodyOnChangeAttachment {
+  // Attaches the `.onChange()` modifier to the `BindingReducer`
+  case binding
+  
+  // Attaches the `.onChange()` modifier to the reducer core.
+  case core
+  
+  // Attaches the `.onChange()` modifier to the `Scope` reducer for the specified child.
+  case scope(String)
+}
+
+/// Adds an `onChange(of: ...)` modifier to the `body` of the Reducer.
+/// - Parameters:
+///   - of: A `KeyPath` of `State` to use in calling the `.onChange()` modifier
+///   - attachment: Specified which Reducer in the `body` to attach the `.onChange()` to. By default it will be attached to the core.
+///
 @attached(peer)
-public macro ComposeBodyOnChange<State, Value>(of keyPath: KeyPath<State, Value>) =
+public macro ComposeBodyOnChange<State, Value>(of keyPath: KeyPath<State, Value>, attachment: ComposeBodyOnChangeAttachment = .core) =
   #externalMacro(
     module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
   )

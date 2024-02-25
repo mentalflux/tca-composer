@@ -403,7 +403,8 @@ final class ReducerAnalyzer: SyntaxVisitor {
     }
 
     var stateKeyPath = ""
-
+    var attachment: ComposeBodyOnChangeAttachment?
+    
     for argument in argumentList {
       switch argument.label?.text {
       case "of":
@@ -419,9 +420,46 @@ final class ReducerAnalyzer: SyntaxVisitor {
               )
             )
           )
-          continue
+          return
         }
         stateKeyPath = "\\\(keyPath.dropFirst(6))"
+      case "attachment":
+        attachment = .init(argument.expression.trimmedDescription)
+        switch attachment {
+        case .binding:
+          guard composition.bindingReducer != nil else {
+            composition.context.diagnose(
+              Diagnostic(
+                node: argument.expression,
+                message: MacroExpansionErrorMessage(
+                """
+                `.binding` attachment requires the Reducer have the `.bindable` option specified.
+                """
+                )
+              )
+            )
+            return
+          }
+          
+        case let .scope(name):
+          guard composition.childReducers[name] != nil else {
+            composition.context.diagnose(
+              Diagnostic(
+                node: argument.expression,
+                message: MacroExpansionErrorMessage(
+                """
+                '\(name)' is not a valid scoped child reducer name.
+                """
+                )
+              )
+            )
+            return
+          }
+          
+        default:
+          break
+        }
+        
       default:
         XCTFail(
           """
@@ -458,7 +496,27 @@ final class ReducerAnalyzer: SyntaxVisitor {
       closure: closure
     )
 
-    composition.bodyCoreModifiers.append(onChange)
+    switch attachment {
+    case .binding:
+      guard var bindingReducer = composition.bindingReducer else {
+        XCTFail("Binding reducer unexpectedly not found")
+        return
+      }
+      bindingReducer.modifiers.append(onChange)
+      composition.bindingReducer = bindingReducer
+      
+    case let .scope(childName):
+      guard var childReducer = composition.childReducers[childName] else {
+        XCTFail("Child reducer unexpectedly not found")
+        return
+      }
+      childReducer.modifiers.append(onChange)
+      composition.childReducers[childName] = childReducer
+      
+    case nil,
+        .core:
+      composition.bodyCoreModifiers.append(onChange)
+    }
   }
 
   func processActionCase(_ node: EnumDeclSyntax, attribute: AttributeSyntax) {

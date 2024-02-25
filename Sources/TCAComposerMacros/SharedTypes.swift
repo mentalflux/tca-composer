@@ -42,15 +42,22 @@ struct BodyMember {
   let name: TokenSyntax
   @LabeledExprListBuilder let argumentList: () -> LabeledExprListSyntax
   let closure: ClosureExprSyntax?
-
+  var modifiers: [BodyMember]
+  
   var reducerBuilder: FunctionCallExprSyntax {
-    FunctionCallExprSyntax(
+    var builder = FunctionCallExprSyntax(
       callee: DeclReferenceExprSyntax(
         baseName: name
       ),
       trailingClosure: closure,
       argumentList: argumentList
     )
+    
+    for modifier in modifiers {
+      builder = modifier.modify(wrap: builder)
+    }
+    
+    return builder
   }
 
   enum Position: String {
@@ -62,11 +69,13 @@ struct BodyMember {
   init(
     name: TokenSyntax,
     @LabeledExprListBuilder argumentList: @escaping () -> LabeledExprListSyntax = { [] },
-    closure: ClosureExprSyntax? = nil
+    closure: ClosureExprSyntax? = nil,
+    modifiers: [BodyMember] = []
   ) {
     self.name = name
     self.argumentList = argumentList
     self.closure = closure
+    self.modifiers = modifiers
   }
 
   func modify(wrap: FunctionCallExprSyntax) -> FunctionCallExprSyntax {
@@ -86,12 +95,35 @@ struct BodyMember {
   }
 }
 
+enum ComposeBodyOnChangeAttachment {
+  case binding
+  case core
+  case scope(String)
+  
+  init?(_ value: String) {
+    switch value {
+    case ".binding":
+      self = .binding
+      
+    case ".core":
+      self = .core
+      
+    case let scope where scope.hasPrefix(".scope(\""):
+      self = .scope(String(scope.dropFirst(8).dropLast(2)))
+      
+    default:
+      return nil
+    }
+  }
+}
+
 struct ScopedChildReducer {
   let name: String
   let keyPaths: ScopeKeyPaths
   let reducer: (() -> FunctionCallExprSyntax?)?
   let functionName: TokenSyntax
-
+  var modifiers = [BodyMember]()
+  
   init(
     name: String,
     functionName: TokenSyntax = Identifiers.Scope,
@@ -139,7 +171,8 @@ struct ScopedChildReducer {
         }
         LabeledExprSyntax(label: "action", expression: keyPaths.actionSyntax)
       },
-      closure: closure)
+      closure: closure,
+      modifiers: modifiers)
   }
 }
 

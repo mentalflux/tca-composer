@@ -5,6 +5,7 @@ import SwiftSyntaxBuilder
 import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 import XCTestDynamicOverlay
+import OrderedCollections
 
 class Composition {
   var options = Set<Option>()
@@ -28,10 +29,11 @@ class Composition {
   var bodyCoreMembers = [BodyMember]()
   var bodyCoreModifiers = [BodyMember]()
   var bodyAfterCoreMembers = [BodyMember]()
+  var bindingReducer: BodyMember?
 
   // Reducers that need to be be converted to BodyMembers
   // after @ComposeBodyReducerChild macros have been processed
-  var childReducers = [ScopedChildReducer]()
+  var childReducers = OrderedDictionary<String, ScopedChildReducer>()
   var childBodyReducers = [ScopedChildReducer]()
 
   // Preserve a reference to the source of the child delcartaion for diagnostics.
@@ -276,6 +278,10 @@ class Composition {
       }
     }
 
+    if isBindable {
+        bindingReducer = .init(name: Identifiers.BindingReducer)
+    }
+    
     if let initialStateCaseExpr {
       let caseName = initialStateCaseExpr.segments.trimmedDescription
       guard let stateMember = stateMembers.first(where: { $0.name == caseName }) else {
@@ -320,15 +326,15 @@ class Composition {
 
     // Add scopes if not enum
     if !isStateEnum || bodyCoreMembers.isEmpty {
-      bodyBeforeCoreMembers.insert(contentsOf: childReducers.map { $0.reducerBuilderMember }, at: 0)
+      bodyBeforeCoreMembers.insert(contentsOf: childReducers.values.map { $0.reducerBuilderMember }, at: 0)
     }
     else {
-      bodyCoreModifiers.insert(contentsOf: childReducers.map { $0.coreBodyModifier }, at: 0)
+      bodyCoreModifiers.insert(contentsOf: childReducers.values.map { $0.coreBodyModifier }, at: 0)
     }
 
-    if isBindable {
+    if let bindingReducer {
       actionMembers.append(.init(name: "binding", type: "BindingAction<State>"))
-      bodyBeforeCoreMembers.insert(.init(name: Identifiers.BindingReducer), at: 0)
+      bodyBeforeCoreMembers.insert(bindingReducer, at: 0)
       // TODO: handle conformance and attributes for Action here
     }
 
@@ -702,10 +708,10 @@ class Composition {
             self?.reducer(for: name)
           })
       } else {
-        childReducers.append(
+        childReducers[name] =
           ScopedChildReducer(name: name) { [weak self] in
             self?.reducer(for: name)
-          })
+          }
       }
 
     case "state":
