@@ -167,6 +167,7 @@ final class ComposeReducerMacroTests: XCTestCase {
     }
   }
   
+  // NB: This has a formatting issue due to a regression in SwiftSyntax v510
   func testBindable() {
     assertMacro {
       """
@@ -188,7 +189,7 @@ final class ComposeReducerMacroTests: XCTestCase {
           @ObservableState
           struct State {
           }
-          @_ComposedAction(.bindableAction) @_ComposerCasePathable @_ComposedActionMember("binding", of: BindingAction<State>.self)
+          @_ComposedAction(.bindableAction) @_ComposerCasePathable @_ComposedActionMember("binding", of: BindingAction<State> .self)
 
           enum Action {
               @ComposeAllCasePaths

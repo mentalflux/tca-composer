@@ -48,7 +48,6 @@ final class ComposerMacroTests: XCTestCase {
     }
   }
   
-  // TODO: Investigate why the expansion didn't occur correctly, it occurs in actual use.
   func testReducerMacroDiagnostic() {
     assertMacro {
       """
@@ -70,10 +69,31 @@ final class ComposerMacroTests: XCTestCase {
     } fixes: {
       """
       @Composer
+      struct Empty {
+      }
       """
-    } expansion: {
+    }expansion: {
       """
-      
+      struct Empty {
+
+          @ObservableState
+          struct State: Equatable {
+
+          }
+
+          @CasePathable
+          enum Action {
+
+          }
+
+          @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
+          var body: some ReducerOf<Self> {
+              ComposableArchitecture.EmptyReducer()
+          }
+      }
+
+      extension Empty: ComposableArchitecture.Reducer {
+      }
       """
     }
   }
