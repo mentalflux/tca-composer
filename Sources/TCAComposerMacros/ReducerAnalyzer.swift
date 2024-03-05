@@ -32,7 +32,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
     } else if scopeNames.isEmpty,
       node.name.text == "State"
     {
-      composition.stateDecl = node.cast(DeclSyntax.self)
+      composition.stateDecl = DeclSyntax(node)
       scopeNames.append(node.name.text)
       visitingState = true
       // TODO: Visit children and gather member names for diagnostics
@@ -57,7 +57,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
       // TODO: Visit children to get member names for diagnostics
     }
     if node.name.trimmedDescription == "State" {
-      composition.stateDecl = node.cast(DeclSyntax.self)
+      composition.stateDecl = DeclSyntax(node)
       visitingState = true
       // TODO: Visit children and gather member names for diagnostics
     }

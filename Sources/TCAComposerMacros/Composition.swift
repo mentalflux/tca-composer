@@ -769,4 +769,8 @@ struct MacroExpansionNoteMessage: NoteMessage {
   var fixItID: MessageID {
     MessageID(domain: "SwiftSyntaxMacroExpansion", id: "\(Self.self)")
   }
+  
+  var noteID: MessageID {
+    MessageID(domain: "SwiftSyntaxMacroExpansion", id: "\(Self.self)")
+  }
 }

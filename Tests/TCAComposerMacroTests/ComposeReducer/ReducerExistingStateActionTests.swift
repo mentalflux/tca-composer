@@ -96,24 +96,34 @@ final class ReducerExistingStateActionTests: XCTestCase {
         @ObservableState
         struct State {
         }
+        enum Action {
+        }
       }
       """
-    } expansion: {
+    }expansion: {
       """
       struct Empty {
         @ObservableState
         struct State {
         }
-
-        @CasePathable
         enum Action {
 
+          struct AllCasePaths {
+
+          }
+
+          static var allCasePaths: AllCasePaths {
+            AllCasePaths()
+          }
         }
 
         @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
         var body: some ReducerOf<Self> {
           ComposableArchitecture.EmptyReducer()
         }
+      }
+
+      extension Action: CasePaths.CasePathable {
       }
 
       extension Empty: ComposableArchitecture.Reducer {
@@ -310,6 +320,7 @@ final class ReducerExistingStateActionTests: XCTestCase {
     }
   }
    
+  // NB: This has a formatting issue due to a regression in SwiftSyntax v510
   func testBindable() {
     assertMacro {
       """
@@ -331,7 +342,7 @@ final class ReducerExistingStateActionTests: XCTestCase {
         @ObservableState
         struct State {
         }
-        @_ComposedAction(.bindableAction) @_ComposedActionMember("binding", of: BindingAction<State>.self)
+        @_ComposedAction(.bindableAction) @_ComposedActionMember("binding", of: BindingAction<State> .self)
 
         enum Action {
           @ComposeAllCasePaths
@@ -547,6 +558,7 @@ final class ReducerExistingStateActionTests: XCTestCase {
     }
   }
   
+  // NB: This has a formatting issue due to a regression in SwiftSyntax v510
   func testArrayOfChild() {
     assertMacro {
       """
@@ -569,9 +581,9 @@ final class ReducerExistingStateActionTests: XCTestCase {
     } expansion: {
       #"""
       struct Feature {
-        @_ComposerScopePathable @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State>.self) @ObservableState
+        @_ComposerScopePathable @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State> .self) @ObservableState
         struct State {
-        }@_ComposedActionMember("counters", of: IdentifiedActionOf<Counter>.self)
+        }@_ComposedActionMember("counters", of: IdentifiedActionOf<Counter> .self)
 
         enum Action {
           @ComposeAllCasePaths
@@ -608,6 +620,7 @@ final class ReducerExistingStateActionTests: XCTestCase {
     }
   }
   
+  // NB: This has a formatting issue due to a regression in SwiftSyntax v510
   func testComplex() {
     assertMacro {
       """
@@ -633,9 +646,9 @@ final class ReducerExistingStateActionTests: XCTestCase {
     } expansion: {
       #"""
       struct Feature {
-        @_ComposerScopePathable @_ComposedStateMember("counter1", of: Counter.State.self) @_ComposedStateMember("counter2", of: Counter.State.self) @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State>.self) @_ComposedStateMember("optionalCounter", of: Counter.State?.self) @ObservableState
+        @_ComposerScopePathable @_ComposedStateMember("counter1", of: Counter.State.self) @_ComposedStateMember("counter2", of: Counter.State.self) @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State> .self) @_ComposedStateMember("optionalCounter", of: Counter.State?.self) @ObservableState
         struct State {
-        }@_ComposedActionMember("counter1", of: Counter.Action.self) @_ComposedActionMember("counter2", of: Counter.Action.self) @_ComposedActionMember("counters", of: IdentifiedActionOf<Counter>.self) @_ComposedActionMember("optionalCounter", of: Counter.Action.self)
+        }@_ComposedActionMember("counter1", of: Counter.Action.self) @_ComposedActionMember("counter2", of: Counter.Action.self) @_ComposedActionMember("counters", of: IdentifiedActionOf<Counter> .self) @_ComposedActionMember("optionalCounter", of: Counter.Action.self)
 
         enum Action {
           @ComposeAllCasePaths

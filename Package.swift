@@ -16,7 +16,7 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apple/swift-collections", from: "1.0.2"),
-    .package(url: "https://github.com/apple/swift-syntax", from: "509.0.0"),
+    .package(url: "https://github.com/apple/swift-syntax", "509.0.0"..<"511.0.0"),
     .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "1.2.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.7.0"),
     .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.2.0"),
