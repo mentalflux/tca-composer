@@ -56,7 +56,7 @@ final class EnumReducerMacroTests: XCTestCase {
               }
 
               @CasePathable
-              enum ScopedState {
+              enum ScopedState: CasePaths.CasePathable  {
 
               }
           }
@@ -153,7 +153,7 @@ final class EnumReducerMacroTests: XCTestCase {
           }
 
           @CasePathable
-          enum ScopedState {
+          enum ScopedState: CasePaths.CasePathable  {
             case counter1(store: Store<Counter.State, Counter.Action>)
             case counter2(store: Store<Counter.State, Counter.Action>)
             case someState(String)
@@ -266,7 +266,7 @@ final class EnumReducerMacroTests: XCTestCase {
           }
 
           @CasePathable
-          enum ScopedState {
+          enum ScopedState: CasePaths.CasePathable  {
             case counter1(store: Store<Counter.State, Counter.Action>)
             case counter2(store: Store<Counter.State, Counter.Action>)
             case someState(String)
@@ -342,7 +342,7 @@ final class EnumReducerMacroTests: XCTestCase {
           }
 
           @CasePathable
-          enum ScopedState {
+          enum ScopedState: CasePaths.CasePathable  {
             case tupleStateDefault(Int, String)
           }
         }

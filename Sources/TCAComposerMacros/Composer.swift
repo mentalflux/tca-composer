@@ -582,7 +582,7 @@ struct Composer {
       }
 
       @CasePathable
-      \(raw: composition.accessModifier)enum ScopedState {
+      \(raw: composition.accessModifier)enum ScopedState: CasePaths.CasePathable  {
       \(raw: decls.map(\.description).joined(separator: "\n"))
       }
       }
