@@ -64,7 +64,7 @@ final class EnumeratedReducerOptionTests: XCTestCase {
           }
 
           @CasePathable
-          enum ScopedState {
+          enum ScopedState: CasePaths.CasePathable  {
             case emptyState
           }
         }
@@ -136,7 +136,7 @@ final class EnumeratedReducerOptionTests: XCTestCase {
           }
 
           @CasePathable
-          enum ScopedState {
+          enum ScopedState: CasePaths.CasePathable  {
             case feature(store: Store<Feature.State, Feature.Action>)
           }
         }

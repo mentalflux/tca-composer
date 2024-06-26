@@ -87,7 +87,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            enum ScopedState {
+            enum ScopedState: CasePaths.CasePathable  {
 
             }
           }
@@ -180,7 +180,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            enum ScopedState {
+            enum ScopedState: CasePaths.CasePathable  {
               case counter(store: Store<Counter.State, Counter.Action>)
             }
           }
@@ -276,7 +276,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            enum ScopedState {
+            enum ScopedState: CasePaths.CasePathable  {
               case counter(SomeState)
             }
           }
@@ -375,7 +375,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            enum ScopedState {
+            enum ScopedState: CasePaths.CasePathable  {
               case counter(SomeState, other: SomeOtherState)
             }
           }
@@ -491,7 +491,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            enum ScopedState {
+            enum ScopedState: CasePaths.CasePathable  {
               case detail(store: Store<SyncUpDetail.State, SyncUpDetail.Action>)
               case meeting(Meeting, syncUp: SyncUp)
               case record(store: Store<RecordMeeting.State, RecordMeeting.Action>)
@@ -588,7 +588,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             }
 
             @CasePathable
-            public enum ScopedState {
+            public enum ScopedState: CasePaths.CasePathable  {
               case counter(store: Store<Counter.State, Counter.Action>)
             }
           }
