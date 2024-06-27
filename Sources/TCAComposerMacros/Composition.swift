@@ -12,8 +12,7 @@ class Composition {
 
   let accessModifier: String
   var stateDecl: DeclSyntax?
-  var actionDecl: EnumDeclSyntax?
-  var actionHasAllCasePaths = false
+
   var bodyDecl: VariableDeclSyntax?
   let reducerDecl: StructDeclSyntax
   let context: MacroExpansionContext
@@ -54,10 +53,6 @@ class Composition {
 
   var stateConformanceOptions = Set<ConformanceOptions>()
   var actionConformanceOptions = Set<ConformanceOptions>()
-
-  var isMissingActionDeclaration: Bool {
-    actionDecl == nil
-  }
 
   var isMissingStateDeclaration: Bool {
     stateDecl == nil
