@@ -14,10 +14,5 @@ struct MacrosPlugin: CompilerPlugin {
     _ComposerScopeSwitchableMacro.self,
     _ComposerScopePathableMacro.self,
     _ComposedStateMemberMacro.self,
-
-    // CasePathable Support Macros
-    _ComposedCasePathMemberMacro.self,
-    _ComposedActionMemberMacro.self,
-    _ComposerCasePathableMacro.self
   ]
 }

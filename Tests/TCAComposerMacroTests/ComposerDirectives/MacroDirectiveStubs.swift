@@ -35,15 +35,6 @@ public enum ComposeActionConfirmationDialogCaseMacro: PeerMacro {
 }
 
 // Declartion to make this macro disappear in macro test expected output
-public enum ComposeAllCasePathsMacro: PeerMacro {
-  public static func expansion(of node: SwiftSyntax.AttributeSyntax,
-                               providingPeersOf declaration: some SwiftSyntax.DeclSyntaxProtocol,
-                               in context: some SwiftSyntaxMacros.MacroExpansionContext) throws -> [SwiftSyntax.DeclSyntax] {
-    return try ComposeDirectiveMacro.expansion(of: node, providingPeersOf: declaration, in: context)
-  }
-}
-
-// Declartion to make this macro disappear in macro test expected output
 public enum ComposeBodyMacro: PeerMacro {
   public static func expansion(of node: SwiftSyntax.AttributeSyntax,
                                providingPeersOf declaration: some SwiftSyntax.DeclSyntaxProtocol,

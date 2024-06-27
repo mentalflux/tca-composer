@@ -35,10 +35,6 @@ struct CounterParentWithExistingStateAndAction {
   struct State {
   }
   
-  enum Action {
-    @ComposeAllCasePaths
-    struct AllCasePaths {}
-  }
 }
 
 // MARK: Alerts and Confirmation Dialogs

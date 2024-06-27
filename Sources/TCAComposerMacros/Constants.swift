@@ -5,12 +5,18 @@ import SwiftSyntaxBuilder
 import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 
+enum CasePathConstants {
+  static let casePathsModuleName = "CasePaths"
+  static let casePathableConformanceName = "CasePathable"
+  static var qualifiedConformanceName: String { "\(Self.casePathsModuleName).\(Self.casePathableConformanceName)" }
+  static var conformanceNames: [String] { [Self.casePathableConformanceName, Self.qualifiedConformanceName] }
+}
+
 enum MacroNames {
+  
   static let composeActionCase = "ComposeActionCase"
   static let composeActionAlertCase = "ComposeActionAlertCase"
   static let composeActionConfirmationDialogCase = "ComposeActionConfirmationDialogCase"
-
-  static let composeAllCasePaths = "ComposeAllCasePaths"
   
   static let composeBody = "ComposeBody"
   static let composeBodyChildReducer = "ComposeBodyChildReducer"
@@ -28,8 +34,6 @@ enum MacroNames {
     composeActionCase,
     composeActionAlertCase,
     composeActionConfirmationDialogCase,
-
-    composeAllCasePaths,
     
     composeBody,
     composeBodyChildReducer,
@@ -60,7 +64,6 @@ enum MacroNames {
   ]
 
   static let structComposeDirectiveMacros = [
-    composeAllCasePaths,
     composeReducer,
     composeEnumReducer,
   ]

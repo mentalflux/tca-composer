@@ -8,19 +8,6 @@ public macro _ComposerCasePathable() =
   module: "TCAComposerMacros", type: "_ComposerCasePathableMacro"
 )
 
-@attached(member, names: arbitrary)
-@attached(memberAttribute)
-public macro _ComposedActionMember<T>(_ name: String, of: T.Type) =
-#externalMacro(
-  module: "TCAComposerMacros", type: "_ComposedActionMemberMacro"
-)
-
-@attached(member, names: arbitrary)
-public macro _ComposedCasePathMember<T>(enumName: String, caseName: String, of: T.Type) =
-#externalMacro(
-  module: "TCAComposerMacros", type: "_ComposedCasePathMemberMacro"
-)
-
 @attached(extension, conformances: ScopePathable)
 @attached(member, names: named(allComposedScopePaths))
 public macro _ComposerScopePathable() =
