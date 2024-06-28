@@ -69,64 +69,64 @@ final class BodyActionCaseTests: XCTestCase {
     }
   }
   
-  func testViewActionScopedExistingAction() {
-    assertMacro {
-      """
-      @Composer
-      struct Feature {
-      
-          enum Action {
-              enum View {
-                  case buttonClicked
-              }
-      
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
-          }
-      
-          @ComposeBodyActionCase
-          func view(state: inout State, action: Action.View) -> EffectOf<Self> {
-              return .none
-          }
-      }
-      """
-    } expansion: {
-      #"""
-      struct Feature {
-          @_ComposedAction(.viewAction) @_ComposerCasePathable @_ComposedActionMember("view", of: Action.View.self)
-
-          enum Action {
-              enum View {
-                  case buttonClicked
-              }
-
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
-          }
-          func view(state: inout State, action: Action.View) -> EffectOf<Self> {
-              return .none
-          }
-
-          @ObservableState
-          struct State: Equatable {
-
-          }
-
-          @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
-          var body: some ReducerOf<Self> {
-              ComposableArchitecture.CombineReducers {
-                  TCAComposer.ReduceAction(\Action.Cases.view) { state, action in
-                      return self.view(state: &state, action: action)
-                  }
-              }
-          }
-      }
-
-      extension Feature: ComposableArchitecture.Reducer {
-      }
-      """#
-    }
-  }
+//  func testViewActionScopedExistingAction() {
+//    assertMacro {
+//      """
+//      @Composer
+//      struct Feature {
+//      
+//          enum Action {
+//              enum View {
+//                  case buttonClicked
+//              }
+//      
+//              @ComposeAllCasePaths
+//              struct AllCasePaths {}
+//          }
+//      
+//          @ComposeBodyActionCase
+//          func view(state: inout State, action: Action.View) -> EffectOf<Self> {
+//              return .none
+//          }
+//      }
+//      """
+//    } expansion: {
+//      #"""
+//      struct Feature {
+//          @_ComposedAction(.viewAction) @_ComposerCasePathable @_ComposedActionMember("view", of: Action.View.self)
+//
+//          enum Action {
+//              enum View {
+//                  case buttonClicked
+//              }
+//
+//              @ComposeAllCasePaths
+//              struct AllCasePaths {}
+//          }
+//          func view(state: inout State, action: Action.View) -> EffectOf<Self> {
+//              return .none
+//          }
+//
+//          @ObservableState
+//          struct State: Equatable {
+//
+//          }
+//
+//          @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
+//          var body: some ReducerOf<Self> {
+//              ComposableArchitecture.CombineReducers {
+//                  TCAComposer.ReduceAction(\Action.Cases.view) { state, action in
+//                      return self.view(state: &state, action: action)
+//                  }
+//              }
+//          }
+//      }
+//
+//      extension Feature: ComposableArchitecture.Reducer {
+//      }
+//      """#
+//    }
+//  }
   
   func testViewActionCustomName() {
     assertMacro {

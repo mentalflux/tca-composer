@@ -50,37 +50,8 @@ struct Composer {
       decls.append(composeMissingState())
     }
 
-    if composition.isMissingActionDeclaration {
-      decls.append(composeMissingAction())
-    }
-    else if let actionDecl = composition.actionDecl, !composition.actionHasAllCasePaths, !composition.actionMembers.isEmpty {
-      var fixedActionDecl = actionDecl
-      let allCasePathsDecl: DeclSyntax =
-          """
-          @ComposeAllCasePaths
-          \(raw: composition.accessModifier)struct AllCasePaths {}
-          """
-      
-      let allCasePathsMember = MemberBlockItemSyntax(leadingTrivia: .newline, decl: allCasePathsDecl)
-      
-      fixedActionDecl.memberBlock.members.append(allCasePathsMember)
-      
-      context.diagnose(
-        Diagnostic(
-          node: actionDecl,
-          message: MacroExpansionErrorMessage(
-            """
-            'Action` must contain an empty `AllCasePaths` struct declaration to support dymamically generated case members.
-            """
-          ),
-          fixIt: .replace(
-            message: MacroExpansionFixItMessage("Add `AllCasePaths`."),
-            oldNode: actionDecl,
-            newNode: fixedActionDecl)
-        )
-      )
-    }
-
+    decls.append(composeMissingAction())
+    
     if composition.isMissingBodyDeclaration {
       decls.append(composeBody())
     }
@@ -330,43 +301,6 @@ struct Composer {
       """
 
     return bodyDecl
-  }
-
-  // TODO: refactor this to add children to a set and sort by name.
-  func composeAttributesForAction(actionDecl: EnumDeclSyntax? = nil) -> [AttributeSyntax] {
-    composition.analyze()
-
-    var decls: [AttributeSyntax] = []
-
-    var composedActionArgs = _ComposedActionMacro.Arguments()
-
-    if composition.hasViewAction {
-      composedActionArgs.options.append(.viewAction)
-    }
-
-    if composition.isBindable {
-      composedActionArgs.options.append(.bindableAction)
-    }
-
-    if !composedActionArgs.options.isEmpty {
-      decls.append(composedActionArgs.macroDecl())
-    }
-
-    decls.append(
-      """
-      @_ComposerCasePathable
-      """
-    )
-
-    for actionMember in composition.actionMembers {
-      decls.append(
-        """
-        @_ComposedActionMember("\(raw: actionMember.name)", of: \(raw: actionMember.type).self)
-        """
-      )
-    }
-
-    return decls
   }
 
   func composeAttributesForExistingEnumState(stateDecl: EnumDeclSyntax) -> [AttributeSyntax] {

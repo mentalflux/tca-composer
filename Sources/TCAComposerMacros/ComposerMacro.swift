@@ -104,27 +104,13 @@ extension ComposerMacro: MemberAttributeMacro {
     if let enumDecl = member.as(EnumDeclSyntax.self) {
       switch enumDecl.name.trimmedDescription {
       case "Action":
-        
-        if let casePathableAttribute = enumDecl.attributes.firstAttribute(for: "CasePathable") {
-          let filteredList = enumDecl.attributes.filter({
-            !$0.tokens(viewMode: .all).map({ $0.tokenKind }).contains(.identifier("CasePathable"))
-          })
-          
-          throw DiagnosticsError(diagnostics: [
-            Diagnostic(
-              node: casePathableAttribute,
-              message: MacroExpansionErrorMessage(
-                "@Composer automatically provides CasePathable conformance for `Action` and is not compatible with `@CasePathable`."),
-              fixIt: .replace(
-                message: MacroExpansionFixItMessage("Remove `@CasePathable`."),
-                oldNode: enumDecl.attributes,
-                newNode: filteredList)
-            )
-          ])
-        }
-        
-        return Composer(reducerDecl, context: context).composeAttributesForAction(
-          actionDecl: enumDecl)
+        throw DiagnosticsError(diagnostics: [
+          Diagnostic(
+            node: enumDecl,
+            message: MacroExpansionErrorMessage(
+              "@Composer automatically generates the `Action` enum, please rename or remove.")
+          )
+        ])
 
       case "Actions":
         // TODO: check if already applied?
@@ -140,7 +126,7 @@ extension ComposerMacro: MemberAttributeMacro {
 
       case let name where name.hasSuffix("Action"):
         if !enumDecl.attributes.allAttributes(
-          matching: _ComposerCasePathableMacro.conformanceNames
+          matching: CasePathConstants.conformanceNames
         ).isEmpty {
           return []
         }
@@ -148,7 +134,7 @@ extension ComposerMacro: MemberAttributeMacro {
         if let inheritanceClause = enumDecl.inheritanceClause,
           inheritanceClause.inheritedTypes.contains(
             where: {
-              _ComposerCasePathableMacro.conformanceNames.contains($0.type.trimmedDescription)
+              CasePathConstants.conformanceNames.contains($0.type.trimmedDescription)
             })
         {
           return []

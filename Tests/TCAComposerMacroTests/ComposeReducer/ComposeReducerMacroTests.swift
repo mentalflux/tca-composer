@@ -103,25 +103,12 @@ final class ComposeReducerMacroTests: XCTestCase {
       struct Empty {
         struct State {}
         enum Action {}
+        ┬─────────────
+        ╰─ 🛑 @Composer automatically generates the `Action` enum, please rename or remove.
         var body: some EffectOf<Self> {
         ╰─ ⚠️ @Composer `body` generation suppressed. Delete or rename `body` to enable.
           EmptyReducer()
         }
-      }
-      """
-    } expansion: {
-      """
-      struct Empty {
-        @ObservableState
-        struct State {}
-        @_ComposerCasePathable
-        enum Action {}
-        var body: some EffectOf<Self> {
-          EmptyReducer()
-        }
-      }
-
-      extension Empty: ComposableArchitecture.Reducer {
       }
       """
     }
@@ -176,11 +163,6 @@ final class ComposeReducerMacroTests: XCTestCase {
       struct Feature {
           struct State {
           }
-      
-          enum Action {
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
-          }
       }
       """
     } expansion: {
@@ -189,11 +171,10 @@ final class ComposeReducerMacroTests: XCTestCase {
           @ObservableState
           struct State {
           }
-          @_ComposedAction(.bindableAction) @_ComposerCasePathable @_ComposedActionMember("binding", of: BindingAction<State> .self)
 
-          enum Action {
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
+          @CasePathable
+          enum Action: ComposableArchitecture.BindableAction {
+              case binding(BindingAction<State>)
           }
 
           @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>

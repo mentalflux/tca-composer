@@ -25,11 +25,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
   var scopeNames = [String]()
 
   override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
-    if vistingActionEnum != nil,
-      node.name.text == "AllCasePaths"
-    {
-      composition.actionHasAllCasePaths = true
-    } else if scopeNames.isEmpty,
+   if scopeNames.isEmpty,
       node.name.text == "State"
     {
       composition.stateDecl = DeclSyntax(node)
@@ -50,12 +46,6 @@ final class ReducerAnalyzer: SyntaxVisitor {
   }
 
   override func visit(_ node: EnumDeclSyntax) -> SyntaxVisitorContinueKind {
-    if node.name.trimmedDescription == "Action" {
-      composition.actionDecl = node
-      vistingActionEnum = node
-      
-      // TODO: Visit children to get member names for diagnostics
-    }
     if node.name.trimmedDescription == "State" {
       composition.stateDecl = DeclSyntax(node)
       visitingState = true

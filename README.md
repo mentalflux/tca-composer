@@ -127,7 +127,7 @@ Now that we have our `State` implemented, let's implement the `Action`. This is 
 
 Now, let's implement the ability to increment and decrement the count by creating two actions `decrementButtonTapped` and `incrementButtonTapped`. In a normal TCA application you would create an `Action` enum and add the two cases. In Composer, we are instead going to name our enum `ViewAction` instead. 
 
-> Note: The name `ViewAction` is chosen by convention. You are free to chose any name and structure your code in any way you like (including nested enums) with Composer.
+> Note: The name `ViewAction` is chosen by convention. You are free to chose any name and structure your code in any way you like with Composer.
 > Composer does have certain preferred conventions and if you adopt them you will be given some additional benefits such as the automatic addition of `@CasePathable` to action enums,
 > but you are not obligated to do so.
 

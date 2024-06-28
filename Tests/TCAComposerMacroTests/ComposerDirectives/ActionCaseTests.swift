@@ -185,51 +185,52 @@ final class ActionCaseTests: XCTestCase {
     }
   }
   
-  func testDelegateActionScoped() {
-    assertMacro {
-      """
-      @Composer
-      struct Feature {
-          enum Action {
-              @ComposeActionCase
-              enum DelegateAction {
-                  case notify
-              }
-      
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
-          }
-      }
-      """
-    } expansion: {
-      """
-      struct Feature {
-          @_ComposerCasePathable @_ComposedActionMember("delegate", of: Action.DelegateAction.self)
-          enum Action {
-              enum DelegateAction {
-                  case notify
-              }
-
-              @ComposeAllCasePaths
-              struct AllCasePaths {}
-          }
-
-          @ObservableState
-          struct State: Equatable {
-
-          }
-
-          @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
-          var body: some ReducerOf<Self> {
-              ComposableArchitecture.EmptyReducer()
-          }
-      }
-
-      extension Feature: ComposableArchitecture.Reducer {
-      }
-      """
-    }
-  }
+  // Need to ponder this further...
+//  func testDelegateActionScoped() {
+//    assertMacro {
+//      """
+//      @Composer
+//      struct Feature {
+//          enum Action {
+//              @ComposeActionCase
+//              enum DelegateAction {
+//                  case notify
+//              }
+//      
+//              @ComposeAllCasePaths
+//              struct AllCasePaths {}
+//          }
+//      }
+//      """
+//    } expansion: {
+//      """
+//      struct Feature {
+//          @_ComposerCasePathable @_ComposedActionMember("delegate", of: Action.DelegateAction.self)
+//          enum Action {
+//              enum DelegateAction {
+//                  case notify
+//              }
+//
+//              @ComposeAllCasePaths
+//              struct AllCasePaths {}
+//          }
+//
+//          @ObservableState
+//          struct State: Equatable {
+//
+//          }
+//
+//          @ComposableArchitecture.ReducerBuilder<Self.State, Self.Action>
+//          var body: some ReducerOf<Self> {
+//              ComposableArchitecture.EmptyReducer()
+//          }
+//      }
+//
+//      extension Feature: ComposableArchitecture.Reducer {
+//      }
+//      """
+//    }
+//  }
   
   func testAlertActionWrongType() {
     assertMacro {

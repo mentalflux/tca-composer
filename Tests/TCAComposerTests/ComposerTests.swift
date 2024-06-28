@@ -10,9 +10,6 @@ final class ComposerTests: XCTestCase {
     struct State: Equatable {
       var count: Int
     }
-    enum Action {
-      
-    }
   }
   
   @ComposeReducer(
@@ -23,10 +20,6 @@ final class ComposerTests: XCTestCase {
   @Composer
   struct Parent {
     
-    enum Action {
-      @ComposeAllCasePaths
-      struct AllCasePaths {}
-    }
   }
   
   func testKeyPathsExistingAction() throws {

@@ -6,7 +6,7 @@ import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 
 public enum _ComposerCasePathableActions: MemberAttributeMacro {
-
+  
   public static func expansion<
     Declaration: DeclGroupSyntax,
     Member: DeclSyntaxProtocol,
@@ -22,7 +22,7 @@ public enum _ComposerCasePathableActions: MemberAttributeMacro {
       return []
     }
 
-    if !enumDecl.attributes.allAttributes(matching: _ComposerCasePathableMacro.conformanceNames)
+    if !enumDecl.attributes.allAttributes(matching: CasePathConstants.conformanceNames)
       .isEmpty
     {
       return []
@@ -31,7 +31,7 @@ public enum _ComposerCasePathableActions: MemberAttributeMacro {
     if let inheritanceClause = enumDecl.inheritanceClause,
       inheritanceClause.inheritedTypes.contains(
         where: {
-          _ComposerCasePathableMacro.conformanceNames.contains($0.type.trimmedDescription)
+          CasePathConstants.conformanceNames.contains($0.type.trimmedDescription)
         })
     {
       return []

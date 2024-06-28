@@ -30,14 +30,6 @@ public macro ComposeActionConfirmationDialogCase(_ name: String = "") =
   module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
 )
 
-/// Directs ``Composer()`` to generate `CasePath`s on an existing `Action` enum. The macro should only be attached
-/// to an empty `AllCasePaths` struct declaration inside of the `Action`
-@attached(peer)
-public macro ComposeAllCasePaths() =
-#externalMacro(
-  module: "TCAComposerMacros", type: "ComposeDirectiveMacro"
-)
-
 /// The plaacement options of
 public enum ComposerBodyPosition {
 
