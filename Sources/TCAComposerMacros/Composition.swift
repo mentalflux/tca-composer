@@ -4,7 +4,7 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
-import XCTestDynamicOverlay
+import IssueReporting
 import OrderedCollections
 
 class Composition {
@@ -215,7 +215,7 @@ class Composition {
                 let option = ConformanceOptions(
                   rawValue: memberAccessExpr.declName.trimmedDescription)
               else {
-                XCTFail("Unknown option in .state options")
+                reportIssue("Unknown option in .state options")
                 continue
               }
               actionConformanceOptions.insert(option)
@@ -245,14 +245,14 @@ class Composition {
                 let option = ConformanceOptions(
                   rawValue: memberAccessExpr.declName.trimmedDescription)
               else {
-                XCTFail("Unknown option in .state options")
+                reportIssue("Unknown option in .state options")
                 continue
               }
               stateConformanceOptions.insert(option)
             }
 
           default:
-            XCTFail("Unknown argument in @ComposeReducer options")
+            reportIssue("Unknown argument in @ComposeReducer options")
           }
         }
         continue
@@ -736,7 +736,7 @@ class Composition {
       addMembers(name: name, childType: .stateless, initialValue: initialValue, sourceSyntax: expr)
 
     default:
-      XCTFail(
+      reportIssue(
         "@Composer found an unknown child type named \"\(methodName)\" while process @ComposeReducer"
       )
     }
