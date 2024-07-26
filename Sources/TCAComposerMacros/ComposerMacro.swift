@@ -4,7 +4,7 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
-import XCTestDynamicOverlay
+import IssueReporting
 
 public enum ComposerMacro {
 }

@@ -5,7 +5,7 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
-import XCTestDynamicOverlay
+import IssueReporting
 
 final class ReducerAnalyzer: SyntaxVisitor {
   var composition: Composition
@@ -451,7 +451,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
         }
         
       default:
-        XCTFail(
+        reportIssue(
           """
           @\(attribute) had unexpected argument named "\(argument.label?.text ?? "(nil)")"
           """
@@ -489,7 +489,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
     switch attachment {
     case .binding:
       guard var bindingReducer = composition.bindingReducer else {
-        XCTFail("Binding reducer unexpectedly not found")
+        reportIssue("Binding reducer unexpectedly not found")
         return
       }
       bindingReducer.modifiers.append(onChange)
@@ -497,7 +497,7 @@ final class ReducerAnalyzer: SyntaxVisitor {
       
     case let .scope(childName):
       guard var childReducer = composition.childReducers[childName] else {
-        XCTFail("Child reducer unexpectedly not found")
+        reportIssue("Child reducer unexpectedly not found")
         return
       }
       childReducer.modifiers.append(onChange)

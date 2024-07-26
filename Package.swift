@@ -15,12 +15,12 @@ let package = Package(
     .library(name: "TCAComposer", targets: ["TCAComposer"])
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-collections", from: "1.0.2"),
-    .package(url: "https://github.com/apple/swift-syntax", "509.0.0"..<"511.0.0"),
-    .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "1.2.0"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.7.0"),
-    .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.2.0"),
-    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.1.0"),
+    .package(url: "https://github.com/apple/swift-collections", from: "1.1.0"),
+    .package(url: "https://github.com/swiftlang/swift-syntax", "509.0.0"..<"511.0.0"),
+    .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "1.5.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.0"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.5.0"),
+    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.2.2"),
   ],
   targets: [
     .target(
@@ -43,7 +43,7 @@ let package = Package(
         .product(name: "OrderedCollections", package: "swift-collections"),
         .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
         .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
-        .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
+        .product(name: "IssueReporting", package: "xctest-dynamic-overlay"),
       ]
     ),
     .testTarget(
