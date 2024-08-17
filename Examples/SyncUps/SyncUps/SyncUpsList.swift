@@ -215,7 +215,6 @@ extension LabelStyle where Self == TrailingIconLabelStyle {
       $0.dataManager = .mock(initialData: Data("!@#$% bad data ^&*()".utf8))
     }
   )
-  .previewDisplayName("Load data failure")
 }
 
 #Preview("Card") {

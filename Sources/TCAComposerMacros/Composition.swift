@@ -2,10 +2,13 @@ import CasePaths
 import SwiftDiagnostics
 import SwiftSyntax
 import SwiftSyntaxBuilder
-import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 import IssueReporting
 import OrderedCollections
+
+#if !canImport(SwiftSyntax600)
+import SwiftSyntaxMacroExpansion
+#endif
 
 class Composition {
   var options = Set<Option>()

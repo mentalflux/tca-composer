@@ -21,9 +21,10 @@
 		5C5EA13B2B3BBB2C007DDD6D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5EA12F2B3BBB2C007DDD6D /* DataManager.swift */; };
 		5C5EA13C2B3BBB2C007DDD6D /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5EA1302B3BBB2C007DDD6D /* SpeechRecognizer.swift */; };
 		5C5EA13D2B3BBB2C007DDD6D /* OpenSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5EA1312B3BBB2C007DDD6D /* OpenSettings.swift */; };
-		5C5EA1452B3BBC4F007DDD6D /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5C5EA1442B3BBC4F007DDD6D /* SwiftUINavigation */; };
 		5C5EA1482B3BBC84007DDD6D /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = 5C5EA1472B3BBC84007DDD6D /* Tagged */; };
 		5CA5FCA22B5743AB009B8076 /* TCAComposer in Frameworks */ = {isa = PBXBuildFile; productRef = 5CA5FCA12B5743AB009B8076 /* TCAComposer */; };
+		5CAFA5C92C701A2800041790 /* SwiftNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAFA5C82C701A2800041790 /* SwiftNavigation */; };
+		5CAFA5CB2C701A2800041790 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 5CAFA5CA2C701A2800041790 /* SwiftUINavigation */; };
 		5CBA21E92B40922000921210 /* AppFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA21E42B40922000921210 /* AppFeatureTests.swift */; };
 		5CBA21EA2B40922000921210 /* SyncUpsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA21E52B40922000921210 /* SyncUpsListTests.swift */; };
 		5CBA21EB2B40922000921210 /* SyncUpDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA21E62B40922000921210 /* SyncUpDetailTests.swift */; };
@@ -70,8 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CAFA5C92C701A2800041790 /* SwiftNavigation in Frameworks */,
 				5C5EA1482B3BBC84007DDD6D /* Tagged in Frameworks */,
-				5C5EA1452B3BBC4F007DDD6D /* SwiftUINavigation in Frameworks */,
+				5CAFA5CB2C701A2800041790 /* SwiftUINavigation in Frameworks */,
 				5CA5FCA22B5743AB009B8076 /* TCAComposer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,9 +180,10 @@
 			);
 			name = SyncUps;
 			packageProductDependencies = (
-				5C5EA1442B3BBC4F007DDD6D /* SwiftUINavigation */,
 				5C5EA1472B3BBC84007DDD6D /* Tagged */,
 				5CA5FCA12B5743AB009B8076 /* TCAComposer */,
+				5CAFA5C82C701A2800041790 /* SwiftNavigation */,
+				5CAFA5CA2C701A2800041790 /* SwiftUINavigation */,
 			);
 			productName = SyncUps;
 			productReference = 5C5EA0F72B3BBA96007DDD6D /* SyncUps.app */;
@@ -233,8 +236,8 @@
 			);
 			mainGroup = 5C5EA0EE2B3BBA96007DDD6D;
 			packageReferences = (
-				5C5EA1432B3BBC4F007DDD6D /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				5C5EA1462B3BBC84007DDD6D /* XCRemoteSwiftPackageReference "swift-tagged" */,
+				5CAFA5C72C701A2800041790 /* XCRemoteSwiftPackageReference "swift-navigation" */,
 			);
 			productRefGroup = 5C5EA0F82B3BBA96007DDD6D /* Products */;
 			projectDirPath = "";
@@ -560,14 +563,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5C5EA1432B3BBC4F007DDD6D /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		5C5EA1462B3BBC84007DDD6D /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-tagged.git";
@@ -576,14 +571,17 @@
 				minimumVersion = 0.10.0;
 			};
 		};
+		5CAFA5C72C701A2800041790 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5C5EA1442B3BBC4F007DDD6D /* SwiftUINavigation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5C5EA1432B3BBC4F007DDD6D /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
-			productName = SwiftUINavigation;
-		};
 		5C5EA1472B3BBC84007DDD6D /* Tagged */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5C5EA1462B3BBC84007DDD6D /* XCRemoteSwiftPackageReference "swift-tagged" */;
@@ -592,6 +590,16 @@
 		5CA5FCA12B5743AB009B8076 /* TCAComposer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TCAComposer;
+		};
+		5CAFA5C82C701A2800041790 /* SwiftNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CAFA5C72C701A2800041790 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftNavigation;
+		};
+		5CAFA5CA2C701A2800041790 /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CAFA5C72C701A2800041790 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftUINavigation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

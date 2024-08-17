@@ -44,7 +44,7 @@ final class ScopePathTests: XCTestCase {
     } expansion: {
       #"""
       struct Feature {
-        @_ComposerScopePathable @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State> .self) @ObservableState
+        @_ComposerScopePathable @_ComposedStateMember("counters", of: IdentifiedArrayOf<Counter.State>.self) @ObservableState
         struct State {
           var filter: Filter
           var filteredCounters: IdentifiedArrayOf<Counter.State> {
