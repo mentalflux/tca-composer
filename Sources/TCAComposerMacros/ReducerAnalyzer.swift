@@ -3,9 +3,12 @@ import SwiftDiagnostics
 import SwiftOperators
 import SwiftSyntax
 import SwiftSyntaxBuilder
-import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 import IssueReporting
+
+#if !canImport(SwiftSyntax600)
+import SwiftSyntaxMacroExpansion
+#endif
 
 final class ReducerAnalyzer: SyntaxVisitor {
   var composition: Composition
@@ -143,8 +146,9 @@ final class ReducerAnalyzer: SyntaxVisitor {
         "id",
         "newValue",
         "oldValue":
-        let isInOut = parameter.type.as(AttributedTypeSyntax.self)?.specifier?.text == "inout"
+        let isInOut = parameter.type.as(AttributedTypeSyntax.self)?.isInout ?? false
 
+        
         if isInOut, name != "state" {
           composition.context.diagnose(
             Diagnostic(

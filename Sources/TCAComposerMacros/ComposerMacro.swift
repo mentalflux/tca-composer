@@ -2,9 +2,12 @@ import SwiftDiagnostics
 import SwiftOperators
 import SwiftSyntax
 import SwiftSyntaxBuilder
-import SwiftSyntaxMacroExpansion
 import SwiftSyntaxMacros
 import IssueReporting
+
+#if !canImport(SwiftSyntax600)
+import SwiftSyntaxMacroExpansion
+#endif
 
 public enum ComposerMacro {
 }
