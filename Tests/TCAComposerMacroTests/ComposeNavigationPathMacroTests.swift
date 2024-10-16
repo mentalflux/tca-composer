@@ -5,7 +5,7 @@ import TCAComposerMacros
 final class ComposeNavigationPathMacroTests: XCTestCase {
   override func invokeTest() {
     withMacroTesting(
-//      isRecording: true,
+//      record: true,
       macros: [ComposerMacro.self,
                ComposeReducerMacro.self
               ]
@@ -80,6 +80,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             typealias State = Path.State
             typealias Action = Path.Action
 
+            @MainActor
             static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
 
@@ -172,6 +173,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             typealias State = Path.State
             typealias Action = Path.Action
 
+            @MainActor
             static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
               case .counter:
@@ -268,6 +270,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             typealias State = Path.State
             typealias Action = Path.Action
 
+            @MainActor
             static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
               case let .counter(v0):
@@ -367,6 +370,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             typealias State = Path.State
             typealias Action = Path.Action
 
+            @MainActor
             static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
               case let .counter(v0, other: v1):
@@ -479,6 +483,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             typealias State = Path.State
             typealias Action = Path.Action
 
+            @MainActor
             static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
               case .detail:
@@ -580,6 +585,7 @@ final class ComposeNavigationPathMacroTests: XCTestCase {
             public typealias State = Path.State
             public typealias Action = Path.Action
 
+            @MainActor
             public static func scopedState(store: StoreOf<Path>) -> ScopedState {
               switch store.state {
               case .counter:

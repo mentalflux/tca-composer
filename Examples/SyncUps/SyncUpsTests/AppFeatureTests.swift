@@ -89,7 +89,7 @@ final class AppFeatureTests: XCTestCase {
 
     var savedSyncUp = syncUp
     savedSyncUp.title = "Blob"
-    XCTAssertNoDifference(
+    expectNoDifference(
       try JSONDecoder().decode([SyncUp].self, from: savedData.value!),
       [savedSyncUp]
     )
