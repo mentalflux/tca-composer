@@ -5,7 +5,7 @@ import TCAComposerMacros
 final class EnumeratedReducerOptionTests: XCTestCase {
   override func invokeTest() {
     withMacroTesting(
-//      isRecording: true,
+//      record: true,
       macros: [ComposerMacro.self,
                ComposeEnumReducerMacro.self,
               ]
@@ -56,6 +56,7 @@ final class EnumeratedReducerOptionTests: XCTestCase {
           typealias State = Empty.State
           typealias Action = Empty.Action
 
+          @MainActor
           static func scopedState(store: StoreOf<Empty>) -> ScopedState {
             switch store.state {
             case .emptyState:
@@ -128,6 +129,7 @@ final class EnumeratedReducerOptionTests: XCTestCase {
           typealias State = Empty.State
           typealias Action = Empty.Action
 
+          @MainActor
           static func scopedState(store: StoreOf<Empty>) -> ScopedState {
             switch store.state {
             case .feature:

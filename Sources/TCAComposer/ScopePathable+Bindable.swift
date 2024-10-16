@@ -7,6 +7,7 @@ extension SwiftUI.Bindable {
   // TODO: Determine if there is a way to get auto-complete working using this approach.
   // public var dmlScopes: BindableComposedScopes<Value> { BindableComposedScopes(store: self.wrappedValue) }
 
+  @MainActor
   public func scopes<State: ScopePathable, Action, ChildState, ChildAction>(
     _ scopeKeyPath: ScopeKeyPath<State, ChildState?, Action, PresentationAction<ChildAction>>
   ) -> Binding<Store<ChildState, ChildAction>?>
@@ -15,6 +16,7 @@ extension SwiftUI.Bindable {
     return self.scope(state: scopePath.state, action: scopePath.action)
   }
 
+  @MainActor
   public func scopes<State: ScopePathable, Action, ElementState, ElementAction>(
     _ scopeKeyPath: ScopeKeyPath<
       State, StackState<ElementState>, Action, StackAction<ElementState, ElementAction>
@@ -61,6 +63,8 @@ extension Perception.Bindable {
 #endif
 
 extension Binding {
+  
+  @MainActor
   public func scopes<State: ObservableState, Action, ChildState, ChildAction>(
     _ scopeKeyPath: ScopeKeyPath<State, ChildState?, Action, PresentationAction<ChildAction>>
     //      state: KeyPath<State, ChildState?>,
@@ -70,6 +74,7 @@ extension Binding {
     return self.scope(state: scopePath.state, action: scopePath.action)
   }
 
+  @MainActor
   public func scopes<State: ScopePathable, Action, ElementState, ElementAction>(
     _ scopeKeyPath: ScopeKeyPath<
       State, StackState<ElementState>, Action, StackAction<ElementState, ElementAction>

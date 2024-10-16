@@ -322,7 +322,7 @@ public macro ComposeEnumReducer(
   #externalMacro(module: "TCAComposerMacros", type: "ComposeDirectiveMacro")
 
 /// Options that can be used to configure the behavior of ``ComposeReducer(_:children:)``.
-public struct ComposeReducerOption {
+public struct ComposeReducerOption: Sendable {
 
   /// Customizes  `Action` when it is automatically generated
   public static func action(_ options: ComposeReducerActionOption...) -> Self { Self() }

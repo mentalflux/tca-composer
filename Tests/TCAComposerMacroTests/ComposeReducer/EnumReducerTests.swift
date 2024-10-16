@@ -49,6 +49,7 @@ final class EnumReducerMacroTests: XCTestCase {
               typealias State = Empty.State
               typealias Action = Empty.Action
 
+              @MainActor
               static func scopedState(store: StoreOf<Empty>) -> ScopedState {
                   switch store.state {
 
@@ -135,6 +136,7 @@ final class EnumReducerMacroTests: XCTestCase {
           typealias State = Empty.State
           typealias Action = Empty.Action
 
+          @MainActor
           static func scopedState(store: StoreOf<Empty>) -> ScopedState {
             switch store.state {
             case .counter1:
@@ -248,6 +250,7 @@ final class EnumReducerMacroTests: XCTestCase {
           typealias State = Empty.State
           typealias Action = Empty.Action
 
+          @MainActor
           static func scopedState(store: StoreOf<Empty>) -> ScopedState {
             switch store.state {
             case .counter1:
@@ -334,6 +337,7 @@ final class EnumReducerMacroTests: XCTestCase {
           typealias State = Empty.State
           typealias Action = Empty.Action
 
+          @MainActor
           static func scopedState(store: StoreOf<Empty>) -> ScopedState {
             switch store.state {
             case let .tupleStateDefault(v0, v1):

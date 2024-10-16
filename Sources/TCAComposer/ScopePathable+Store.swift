@@ -5,6 +5,7 @@ import ComposableArchitecture
 public struct ComposedScopeStores<State: ScopePathable, Action> {
   let store: Store<State, Action>
 
+  @MainActor
   public subscript<ChildState, ChildAction>(
     dynamicMember keyPath: ScopeKeyPath<State, ChildState, Action, ChildAction>
   ) -> Store<ChildState, ChildAction> {
@@ -49,6 +50,7 @@ public struct ComposedScopeStores<State: ScopePathable, Action> {
   ///   - state: A key path to optional child state.
   ///   - action: A case key path to child actions.
   /// - Returns: An optional store of non-optional child state and actions.
+  @MainActor
   public subscript<ChildState, ChildAction>(
     dynamicMember keyPath: ScopeKeyPath<State, ChildState?, Action, ChildAction>
   ) -> Store<ChildState, ChildAction>? {
@@ -57,6 +59,7 @@ public struct ComposedScopeStores<State: ScopePathable, Action> {
   }
 
   @_disfavoredOverload
+  @MainActor
   public subscript<ElementID, ElementState, ElementAction>(
     dynamicMember keyPath: ScopeKeyPath<
       State, IdentifiedArray<ElementID, ElementState>, Action,

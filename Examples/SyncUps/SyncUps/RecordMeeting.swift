@@ -141,7 +141,9 @@ struct RecordMeeting {
 
   private func startSpeechRecognition(send: Send<Action>) async {
     do {
-      let speechTask = await self.speechClient.startTask(SFSpeechAudioBufferRecognitionRequest())
+      let speechTask = await self.speechClient.startTask(
+        UncheckedSendable(SFSpeechAudioBufferRecognitionRequest())
+      )
       for try await result in speechTask {
         await send(.effect(.speechResult(result)))
       }

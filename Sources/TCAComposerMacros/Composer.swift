@@ -509,6 +509,7 @@ struct Composer {
       \(raw: composition.accessModifier)typealias State = \(raw: reducerName).State
       \(raw: composition.accessModifier)typealias Action = \(raw: reducerName).Action
 
+      @MainActor
       \(raw: composition.accessModifier)static func scopedState(store: StoreOf<\(raw: reducerName)>) -> ScopedState {
       switch store.state {
       \(raw: switchCases.joined(separator: "\n"))

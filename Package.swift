@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 
 import CompilerPluginSupport
 import PackageDescription
@@ -18,9 +18,9 @@ let package = Package(
     .package(url: "https://github.com/apple/swift-collections", from: "1.1.0"),
     .package(url: "https://github.com/swiftlang/swift-syntax", "509.0.0"..<"601.0.0-prerelease"),
     .package(url: "https://github.com/pointfreeco/swift-case-paths", from: "1.5.0"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.13.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.0"),
     .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.5.0"),
-    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.2.2"),
+    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.4.0"),
   ],
   targets: [
     .target(

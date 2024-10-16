@@ -15,5 +15,6 @@ public protocol ScopeCases<State, Action> {
   associatedtype Action
   associatedtype ScopedState
 
+  @MainActor
   static func scopedState(store: Store<State, Action>) -> ScopedState
 }
