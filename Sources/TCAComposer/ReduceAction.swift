@@ -33,7 +33,7 @@ public struct ReduceAction<State, Action, ChildAction> {
 }
 
 @Reducer
-public struct ReduceIdentifiedAction<State, Action, ElementID: Hashable, ChildAction, ElementAction>
+public struct ReduceIdentifiedAction<State, Action, ElementID: Hashable & Sendable, ChildAction, ElementAction>
 {
 
   @usableFromInline
